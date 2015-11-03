@@ -1,24 +1,24 @@
 var point1 = {x:50,y:200,z:100};
 var point2 = {x:100,y:300,z:100};
 var point3 = {x:150,y:100,z:40};
-circle(100,100,20,2);
-console.log("test");
+var canvas = document.getElementById("c");
+var context = canvas.getContext("2d");
+var PI = Math.PI;
+var D = 100;
+
 plane70 = planeMaker(point1,point2,point3);
 printPlane(plane70);
 var line70 = {m:3,P:3,n:1.5,Q:0};
 graphLine(line70);
-var canvas = document.getElementById("c");
-console.log("canvas is ",canvas);
-var context = canvas.getContext("2d");
+point70 = planeLineIntersect(line70,plane70);
+point70y = pointConvert(point70.x, point70.y);
+point70z = pointConvert(point70.x, point70.z);
+circle(point70y,point70z,2,1);
 
-
-// point70 = planeLineIntersect(line70,plane70);
-// point70y = pointConvert(point70.x, point70.y);
-// point70z = pointConvert(point70.x, point70.z);
-// circle(point70y,point70z,2,1);
-
-// //plane70 = {A:1,B:1,D:-1};
-
+function pointConvert(x,w)
+{
+    return  w * D / (x + D);
+}
 function graph(x1,y1,z1,x2,y2,z2)
 {
     var gy1 = pointConvert(x1,y1);
